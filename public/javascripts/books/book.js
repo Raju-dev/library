@@ -74,7 +74,11 @@ angular.module('features.book',['ui.router', 'ui.bootstrap'])
         $uibModalInstance.close(result.data);
       })
       .catch(function(error){
-        alert("Something went wrong try again later!");
+        if(error.data && error.data.message){
+          alert(error.data.message);
+        } else {
+          alert("Something went wrong try again later!");
+        }
       })
     }
   }
@@ -104,8 +108,12 @@ function($scope, $http, $uibModalInstance, user){
         $uibModalInstance.close(params);
       })
       .catch(function(error){
-        alert("Something went wrong try again later!");
-      });
+        if(error.data && error.data.message){
+          alert(error.data.message);
+        } else {
+          alert("Something went wrong try again later!");
+        }
+      })
     }
   }
 }])
@@ -119,8 +127,12 @@ function($scope, $http, $uibModalInstance, user){
       $scope.books = result.data;
     })
     .catch(function(error){
-      alert("Unable to load users this time. Something went wrong.");
-    });
+      if(error.data && error.data.message){
+        alert(error.data.message);
+      } else {
+        alert("Something went wrong try again later!");
+      }
+    })
   };
 
   $scope.returnBook = function(book){
@@ -134,11 +146,11 @@ function($scope, $http, $uibModalInstance, user){
       $scope.loadUsers();
     })
     .catch(function(error){
-      if(error.data.message){
+      if(error.data && error.data.message){
         alert(error.data.message);
-        return;
+      } else {
+        alert("Something went wrong try again later!");
       }
-      alert("Something went wrong try again later!");
     });
   };
 
@@ -170,8 +182,12 @@ function($scope, $http, $uibModalInstance, user){
       $scope.loadUsers();
     })
     .catch(function(error){
-      console.log(error);
-    });
+      if(error.data && error.data.message){
+        alert(error.data.message);
+      } else {
+        alert("Something went wrong try again later!");
+      }
+    })
   };
 
   $scope.addBook = function(){
@@ -249,13 +265,17 @@ function($scope, $http, $uibModalInstance, user){
     };
 
     $scope.loadUsers = function(){
-      $http.get($scope.apiUrl+'users')
+      $http.get($scope.apiUrl+'users?role=2')
       .then(function(result){
         $scope.users = result.data;
       })
       .catch(function(error){
-        alert("Unable to load users this time. Something went wrong.");
-      });
+        if(error.data && error.data.message){
+          alert(error.data.message);
+        } else {
+          alert("Something went wrong try again later!");
+        }
+      })
     };
     $scope.loadUsers();
 }]);

@@ -1,14 +1,11 @@
 <div class="container">
-  <div class="row" style="padding-left:15px;margin-bottom:15px;">
-    <button class="btn btn-success" ng-click="addBook()">Add New Book</button>
-  </div>
 
   <div class="form-group">
     <label for="filter_text">Search:</label>
     <input class="form-control" id="filter_text" ng-model="filter_text"/>
   </div>
 
-  <table class="table table-striped" style="border:1px solid #ccc;">
+  <table class="table table-striped" style="border:1px solid #ccc;" ng-if="transactions.length">
     <thead>
       <th>Transaction Type</th>
       <th>Book Name</th>
@@ -26,4 +23,6 @@
       </tr>
     </tbody>
   </table>
+
+  <div uib-alert style="background:#31B0D5;color:white" ng-if="!transactions.length">No transactions!</div>
 </div>

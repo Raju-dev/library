@@ -44,7 +44,11 @@ angular.module('features.user',['ui.router','services.userservice'])
       $location.path('/');
     })
     .catch(function(error){
-
+      if(error.data && error.data.message){
+        alert(error.data.message);
+      } else {
+        alert("Something went wrong try again later!");
+      }
     });
 }])
 .controller("features.controllers.UserController",['$scope', '$http', '$uibModalInstance', function($scope, $http, $uibModalInstance){
@@ -71,12 +75,12 @@ angular.module('features.user',['ui.router','services.userservice'])
         $uibModalInstance.close(result.data);
       })
       .catch(function(error){
-        if(error.data.message){
+        if(error.data && error.data.message){
           alert(error.data.message);
         } else {
           alert("Something went wrong try again later!");
         }
-      })
+      });
     }
   }
 }])
@@ -90,7 +94,11 @@ angular.module('features.user',['ui.router','services.userservice'])
       $scope.users = result.data;
     })
     .catch(function(error){
-      alert("Unable to load users this time. Something went wrong.");
+      if(error.data && error.data.message){
+        alert(error.data.message);
+      } else {
+        alert("Something went wrong try again later!");
+      }
     });
   };
 
@@ -104,8 +112,12 @@ angular.module('features.user',['ui.router','services.userservice'])
       $scope.loadUsers();
     })
     .catch(function(error){
-      console.log(error);
-    });
+      if(error.data && error.data.message){
+        alert(error.data.message);
+      } else {
+        alert("Something went wrong try again later!");
+      }
+    })
   };
 
   $scope.addUser = function(){
@@ -172,7 +184,11 @@ function($scope, $http, $uibModalInstance, user){
         $uibModalInstance.close(params);
       })
       .catch(function(error){
-        alert("Something went wrong try again later!");
+        if(error.data && error.data.message){
+          alert(error.data.message);
+        } else {
+          alert("Something went wrong try again later!");
+        }
       });
     }
   }

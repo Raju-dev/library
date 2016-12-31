@@ -5,6 +5,7 @@ var credential = require('credential');
 var pw = credential();
 var Promise = require("bluebird");
 var _ = require("lodash");
+var url = require('url');
 
 router.use(function(req, res, next){
   res.header("Access-Control-Allow-Origin", "*");
@@ -175,7 +176,14 @@ router.post('/transaction', securityCheck, function(req, res, next){
 
 
 router.get('/users', securityCheck, function(req, res, next){
-  models.user.find({})
+  var query = {};
+  var data = url.parse(req.url, true);
+  if(data.query.role){
+    query.where = {
+      role : data.query.role
+    };
+  }
+  models.user.find(query)
   .then(function(result){
     res.json(result);
   })

@@ -2,7 +2,13 @@ var Promise = require("bluebird");
 var mongoose = Promise.promisifyAll(require('mongoose'));
 var credential = require('credential');
 var Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost:27017/demo');
+mongoose.connect('mongodb://localhost:27017/demo')
+.then(function(){
+  console.log("Connected successfully!");
+})
+.catch(function(error){
+  console.log("Unable to connect", error.message);
+});
 
 var userSchema = new mongoose.Schema({
   username : {
@@ -51,7 +57,8 @@ module.exports.book = mongoose.model('book',{
   },
   isbn : {
     type : String,
-    required : true
+    required : true,
+    unique : true
   }
 });
 

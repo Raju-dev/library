@@ -8,7 +8,7 @@
     <input class="form-control" id="filter_text" ng-model="filter_text"/>
   </div>
 
-  <table class="table table-striped" style="border:1px solid #ccc;">
+  <table class="table table-striped" style="border:1px solid #ccc;" ng-if="books.length">
     <thead>
       <th>Name</th>
       <th>Author Name</th>
@@ -35,4 +35,6 @@
       </tr>
     </tbody>
   </table>
+
+  <div uib-alert style="background:#31B0D5;color:white" ng-if="!books.length">No books!</div>
 </div>

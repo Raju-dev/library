@@ -20,7 +20,7 @@
         <input class="form-control" id="filter_text" ng-model="filter_text"/>
       </div>
 
-      <table class="table table-striped" style="border:1px solid #ccc;">
+      <table class="table table-striped" style="border:1px solid #ccc;" ng-if="users.length">
         <thead>
           <th></th>
           <th>Username</th>
@@ -41,7 +41,8 @@
           </tr>
         </tbody>
       </table>
+
+      <div uib-alert style="background:#31B0D5;color:white" ng-if="!users.length">No users found!</div>
       <div class="text-danger" style="padding-bottom:10px;" ng-if="selectedError && !book.opt">Select a user to issue book.</div>
       <button class="btn btn-success" ng-click="issueBook()">Issue Book</button>
-
 </div>
