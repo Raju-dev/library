@@ -1,0 +1,18 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.login_container {
+	width: 300px;
+	margin: 0 auto;
+	margin-top: 117px;
+}
+
+.custom-a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}

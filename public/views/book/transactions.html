@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row" style="padding-left:15px;margin-bottom:15px;">
+    <button class="btn btn-success" ng-click="addBook()">Add New Book</button>
+  </div>
+
+  <div class="form-group">
+    <label for="filter_text">Search:</label>
+    <input class="form-control" id="filter_text" ng-model="filter_text"/>
+  </div>
+
+  <table class="table table-striped" style="border:1px solid #ccc;">
+    <thead>
+      <th>Transaction Type</th>
+      <th>Book Name</th>
+      <th>User Name</th>
+      <th>Issued/Returned Date</th>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="transaction in transactions | filter:filter_text">
+        <th>{{transaction.transaction.type=="issue" ? "Issued" : "Returned"}}</th>
+        <td>{{transaction.book.name}}</td>
+        <td>{{transaction.user.name}}</td>
+        <td ng-if="transaction.transaction.type=='issue'">{{transaction.transaction.issue_date | date : mediumDate}}</td>
+        <td ng-if="transaction.transaction.type!='issue'">{{transaction.transaction.returned_date | date : mediumDate}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

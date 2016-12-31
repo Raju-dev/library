@@ -1,0 +1,47 @@
+<div class="modal-body">
+
+      <div class="form-group">
+        <label>Author Name: </label>
+        {{book.author_name}}
+      </div>
+
+      <div class="form-group">
+        <label>Book Name: </label>
+        {{book.name}}
+      </div>
+
+      <div class="form-group">
+        <label>ISBN: </label>
+        {{book.isbn}}
+      </div>
+
+      <div class="form-group">
+        <label for="filter_text">Search User:</label>
+        <input class="form-control" id="filter_text" ng-model="filter_text"/>
+      </div>
+
+      <table class="table table-striped" style="border:1px solid #ccc;">
+        <thead>
+          <th></th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th>Name</th>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="user in users | filter: filter_text">
+            <th>
+              <input type="radio" value="{{user._id}}" name="opt" ng-model="book.opt">
+            </th>
+            <td>{{user.username}}</td>
+            <th>{{user.email}}</th>
+            <td>{{user.contact}}</td>
+            <td>{{user.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-danger" style="padding-bottom:10px;" ng-if="selectedError && !book.opt">Select a user to issue book.</div>
+      <button class="btn btn-success" ng-click="issueBook()">Issue Book</button>
+
+</div>

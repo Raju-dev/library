@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row" style="padding-left:15px;margin-bottom:15px;">
+    <button class="btn btn-success" ng-click="addBook()">Add New Book</button>
+  </div>
+
+  <div class="form-group">
+    <label for="filter_text">Search:</label>
+    <input class="form-control" id="filter_text" ng-model="filter_text"/>
+  </div>
+
+  <table class="table table-striped" style="border:1px solid #ccc;">
+    <thead>
+      <th>Name</th>
+      <th>Author Name</th>
+      <th>ISBN</th>
+      <th>Availability</th>
+      <th>Action</th>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="book in books | filter:filter_text">
+        <th>{{book.name}}</th>
+        <td>{{book.author_name}}</td>
+        <td>{{book.isbn}}</td>
+        <th ng-if="book.availability">
+          Available <a class="btn btn-success custom-a" ng-click="issueBook(book)">Issue</a>
+        </th>
+        <th ng-if="!book.availability">
+          Not Available <a class="btn btn-danger custom-a" ng-click="returnBook(book)">Return</a>
+        </th>
+        <th>
+          <i class="glyphicon glyphicon-edit" title="Edit Book" style="cursor:pointer;" ng-click="editBook(book)"></i>
+          <i class="glyphicon glyphicon-trash" title="Delete Book" style="cursor:pointer;" ng-click="deleteBook(book)"></i>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>

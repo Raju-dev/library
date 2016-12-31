@@ -1,0 +1,36 @@
+<div class="modal-body">
+    <form name="bookForm">
+      <div class="form-group" ng-if="success">
+        <div class="alert alert-success">
+          Book added successfully!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="authorname">Author Name</label>
+        <input type="text" required id="authorname" name="authorname" class="form-control" ng-model="authorname">
+      </div>
+
+      <div class="form-group">
+        <label for="name">Book Name</label>
+        <input type="text" required id="name" name="name" class="form-control" ng-model="name">
+      </div>
+
+      <div class="form-group">
+        <label for="isbn">ISBN</label>
+        <input type="text" required id="isbn" name="isbn" class="form-control" ng-model="isbn">
+      </div>
+
+      <div class="form-group">
+        <label for="status">Availability Status</label>
+        <select id="status" required name="status" class="form-control" ng-model="status">
+          <option value="0">Not Available</option>
+          <option value="1">Available</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" ng-click="save()">Save</button>
+      </div>
+    </form>
+
+</div>

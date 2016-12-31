@@ -1,0 +1,27 @@
+{
+  "name": "generate",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "angular-ui-bootstrap": "^2.3.2",
+    "bluebird": "^3.4.7",
+    "body-parser": "~1.15.1",
+    "config": "^1.24.0",
+    "cookie-parser": "~1.4.3",
+    "credential": "^1.0.0",
+    "crypto": "0.0.3",
+    "debug": "~2.2.0",
+    "ejs": "^2.5.5",
+    "express": "~4.13.4",
+    "express-session": "^1.14.2",
+    "jade": "~1.11.0",
+    "jsonwebtoken": "^7.2.1",
+    "lodash": "^4.17.3",
+    "mongoose": "^4.7.2",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.0"
+  }
+}

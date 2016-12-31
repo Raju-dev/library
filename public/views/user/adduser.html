@@ -1,0 +1,50 @@
+<div class="modal-body">
+    <form name="userForm">
+      <div class="form-group" ng-if="success">
+        <div class="alert alert-success">
+          User saved successfully!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" required id="username" name="username" class="form-control" ng-model="username">
+        <!-- <div ng-messages="userForm.username.$error">
+          <p class="text-danger" ng-message="required">Username is Required.</p>
+          <p class="text-danger" ng-message="pattern">Username is invalid.</p>
+        </div> -->
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" required id="email" name="email" class="form-control" ng-model="email">
+      </div>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" required id="name" name="name" class="form-control" ng-model="name">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" required id="password" name="password" class="form-control" ng-model="password">
+      </div>
+
+      <div class="form-group">
+        <label for="contact">Contact No</label>
+        <input type="text" required id="contact" name="contact" class="form-control" ng-model="contact">
+      </div>
+
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role"  required name="role" class="form-control" ng-model="role">
+          <option value="1">Admin</option>
+          <option value="2">User</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary" ng-click="save()">Save</button>
+      </div>
+    </form>
+</div>

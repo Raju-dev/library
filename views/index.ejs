@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title> Library </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+    <script src="javascripts/angular-ui-router.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script>
+    <script src="javascripts/ui-bootstrap.js"></script>
+    <script src="javascripts/userservice.js"></script>
+    <script src="javascripts/users/user.js"></script>
+    <script src="javascripts/books/book.js"></script>
+    <script src="javascripts/app.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/style.css" rel="stylesheet">
+  </head>
+  <body ng-app="myApp">
+    <div ng-controller="ApplicationController">
+      <section ui-view="header">
+      </section>
+      <div class="container">
+        <section ui-view="content">
+          {{name}}
+        </section>
+      </div>
+      <div ui-view="footer">
+      </div>
+    </div>
+  </body>
+</html>

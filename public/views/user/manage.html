@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row" style="padding-left:15px;margin-bottom:15px;">
+    <button class="btn btn-success" ng-click="addUser()">Add New User</button>
+  </div>
+
+  <div class="form-group">
+    <label for="filter_text">Search:</label>
+    <input class="form-control" id="filter_text" ng-model="filter_text"/>
+  </div>
+
+  <table class="table table-striped" style="border:1px solid #ccc;">
+    <thead>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Contact</th>
+      <th>Role</th>
+      <th>Name</th>
+      <th>Action</th>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="user in users | filter: filter_text">
+        <td>{{user.username}}</td>
+        <th>{{user.email}}</th>
+        <td>{{user.contact}}</td>
+        <th>{{user.role==1 ? 'Admin' : 'User'}}</th>
+        <td>{{user.name}}</td>
+        <th>
+          <i class="glyphicon glyphicon-edit" title="Edit User" style="cursor:pointer;" ng-click="editUser(user)"></i>
+          <i class="glyphicon glyphicon-trash" title="Delete User" style="cursor:pointer;" ng-click="deleteUser(user)"></i>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
