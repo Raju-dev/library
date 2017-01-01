@@ -127,7 +127,6 @@ angular.module('features.user',['ui.router','services.userservice'])
       size: 'md'
     });
     modal.result.then(function(result){
-      alert("Book added successfully!");
       $scope.users.push(result);
     });
   };

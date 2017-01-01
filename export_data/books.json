@@ -1,0 +1,4 @@
+{"_id":{"$oid":"58687ee7b23d5a14d4564b3d"},"author_name":"RD Sharma","name":"Mathematics","isbn":"LJLK89080JLKL","availability":true,"__v":0}
+{"_id":{"$oid":"58687efeb23d5a14d4564b3e"},"author_name":"RD Sharma","name":"English","isbn":"FDSDFSDF145","availability":true,"__v":0}
+{"_id":{"$oid":"58687f1db23d5a14d4564b3f"},"author_name":"Author","name":"Chemistry","isbn":"FDSD567SDF134","availability":true,"__v":0}
+{"_id":{"$oid":"58687f35b23d5a14d4564b40"},"author_name":"AK Sharma","name":"Geography","isbn":"KLKLKL","availability":true,"__v":0}

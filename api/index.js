@@ -15,11 +15,11 @@ router.use(function(req, res, next){
 
 
 var securityCheck = function(req, res, next){
-  if(req.session.user){
+  if(req.session.user && req.session.user.role==1){
     return next();
   }
   else{
-    return res.status(403).send({message: 'Unautharized'});
+    return res.status(403).send({message: 'Unautharized Access. Either session expired or you are not logged in!'});
   }
 };
 
@@ -85,28 +85,28 @@ router.get('/transactions', securityCheck, function(req, res, next){
 
 
 router.post('/auth', function(req, res){
-     var email = req.body.email;
-     var password = req.body.password;
-     models.user.findOne({
-         email: email
-     })
-     .then(function(usr){
-        if(!usr) return res.status(401).json({message: 'Invalid username or password.'});
+   var email = req.body.email;
+   var password = req.body.password;
+   models.user.findOne({
+       email: email
+   })
+   .then(function(usr){
+      if(!usr) return res.status(401).json({message: 'Invalid username or password.'});
 
-        pw.verify(usr.password, password, function (err, isValid) {
-          if (err) { return res.status(401).json({message: 'Invalid username or password.'}); }
+      pw.verify(usr.password, password, function (err, isValid) {
+        if (err) { return res.status(401).json({message: 'Invalid username or password.'}); }
 
-          if(isValid){
-            req.session.user = usr;
-            res.json(usr);
-          } else {
-            return res.status(401).json({message: 'Invalid username or password.'});
-          }
-        });
-     })
-     .catch(function(e){
-       res.status(500).send(e);
-     })
+        if(isValid){
+          req.session.user = usr;
+          res.json(usr);
+        } else {
+          return res.status(401).json({message: 'Invalid username or password.'});
+        }
+      });
+   })
+   .catch(function(e){
+     res.status(500).send(e);
+   })
 });
 
 router.post('/logout', securityCheck, function(req, res){
@@ -179,7 +179,7 @@ router.get('/users', securityCheck, function(req, res, next){
   var query = {};
   var data = url.parse(req.url, true);
   if(data.query.role){
-    query.where = {
+    query = {
       role : data.query.role
     };
   }

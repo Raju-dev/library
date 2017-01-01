@@ -11,7 +11,7 @@ myApp.config([
             if(errorResponse.status == 403)
             {
                 UserService.destroyUser();
-                $rootScope.loggedIn = false;
+                $rootScope.isLoggedin = false;
                 $location.path('/');
             }
             return $q.reject(errorResponse);
